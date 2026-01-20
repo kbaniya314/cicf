@@ -1,6 +1,22 @@
 # CICF Week 3
 
-This week is a hands-on guide working in a supercomputing environment at the [Texas Advanced Computing Center (TACC)](https://tacc.utexas.edu/).
+The lesson for this week is a hands-on guide working in a supercomputing environment at the [Texas Advanced Computing Center (TACC)](https://tacc.utexas.edu/).
+However, there are many things with Python that are left to go over, so the tutorial will look at Jupyter notebooks and the Pandas library.
+
+The goals for this tutorial are:
+
+1. Download data from LIGO and know what an HDF5 file is.
+2. Use the NumPy and Pandas packages.
+
+
+## Tutorial
+
+You can run Jupyter notebooks in the Codespace.
+Open the [first notebook](./1-introduction.ipynb) in a tab (either click on the file in the left-side file browser, or use the `code` command at the command line).
+When the notebook opens, there should be a button at the top left to "Select kernel".
+Click it and then choose the second option, the installed python version.
+And this point you can execute the code cells in the notebook by putting the curser in the cell and typing Ctrl-Return.
+
 
 
 # Resources

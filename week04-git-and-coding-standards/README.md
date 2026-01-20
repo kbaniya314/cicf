@@ -313,7 +313,7 @@ By default Git will make a directory named `cicf` and put everything inside ther
 
     cd cicf
     ls
-    cd week01-commandline
+    cd week01-command-line
     cat README.md
 
 <!-- END -->

@@ -99,9 +99,9 @@ license.
 <!-- References -->
 
 [started]: ./getting-started
-[week01]: ./week01
-[week02]: ./week02-python-and-jupyter
-[week03]: ./week03-scientific-computing
+[week01]: ./week01-command-line
+[week02]: ./week02-python
+[week03]: ./week03-more-python
 [week04]: ./week04-git-and-coding-standards
 [week05]: ./week05-containers-and-debugging
 [week06]: ./week06-fair-data

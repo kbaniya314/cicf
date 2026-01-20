@@ -120,7 +120,7 @@ You can change the current directory with the `cd` (**c**hange **d**irectory) co
 The `cd` command takes a single, optional argument, which is the path to the directory you want to change to.
 If you don't enter a directory you will go to your _home directory_.
 
-    cd week01
+    cd week01-command-line
 
 You can use the `.` and `..` relative paths to give locations.
 For example, go up a level by using `..` as the path

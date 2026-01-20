@@ -393,7 +393,7 @@ I used the tool [`s3cmd`][s3cmd] to all this.
 
 ```
 $ s3cmd mb s3://cicf-bucket
-$ s3cmd put ../../week02-python-and-jupyter/H-H2_LOSC_4_V1-815235072-4096.hdf5 s3://cicf-object-store 
+$ s3cmd put ../../week02-python/H-H2_LOSC_4_V1-815235072-4096.hdf5 s3://cicf-object-store
 $ s3cmd setacl s3://cicf-object-store/H-H2_LOSC_4_V1-815235072-4096.hdf5 --acl-public
 ```
 

@@ -12,84 +12,6 @@ format:
 
 # Welcome to week two of CICF!
 
-## The plan this week
-
-We will work through four Jupyter notebooks in the tutorials this
-week. 
-
-::: {.notes}
-
-The notebooks will give you:
-
-- A quick tour of Jupyter notebooks.
-- A quick tour of Python programming language.
-- A quick overview of Python packages.
-- A quick example of working with some LIGO data in Jupyter.
-
-By necessity, we will keep things short and simple, and gloss over
-some things.
-
-:::
-
-# Jupyter
-
-## Jupyter notebooks
-
-![image from https://jupyter.org/](./img/jupyter-notebook.png){width=50%}
-
-::: {.notes}
-
-What are Jupyter notebooks?  Why are they useful?
-
-- Jupyter notebooks are a way to write text/documentation, code,
-  equations, data, graphs, images, etc. together.
-- You can view and edit these notebooks in a web browser window.
-- You can execute code in these notebooks from the web browser window.
-- You can share these notebooks with other people.
-
-They are kind of like paper lab notebooks, but in a browser window.
-
-:::
-
-## JupyterLab
-
-![image from https://jupyter.org/](./img/jupyter-lab.png){width=50%}
-
-::: {.notes}
-
-- JupyterLab is a newer, fancier way of working with notebooks.
-- Kind of like a web-based IDE (integrated development environment).
-- You can work with multiple notebooks side by side, use a file
-  browser, and use plugins that enhance functionality.
-:::
-
-## JupyterLab instances out there
-
-![](./img/colab.png){width=50%}
-
-::: {.notes}
-
-- Many organizations and projects host their own JupyterLab instances.
-
-- [Google Colab](https://colab.research.google.com), [Microsoft
-  Planetary Computer](https://planetarycomputer.microsoft.com/), [FABRIC
-  project's JupyterLab instance](https://jupyter.fabric-testbed.net/),
-  [Chameleon project's JupyterLab
-  instance](https://jupyter.chameleoncloud.org/), etc.
-
-
-- Google Colab is a fancier, dressed up rich cousin of JupyterLab.
-  Your notebooks will work there.
-
-- You can also set up an IDE (such as VS Code or Codium) to work with
-  notebooks.
-  
-- You can preview notebooks from GitHub.com, sometimes.
-
-- [GitHub Codespaces](https://github.com/codespaces) has support for
-  notebooks.
-:::
-
 # Python
 
 ## First, a little preliminary
@@ -237,8 +159,8 @@ if temperature >= 100:
 else:
     print("Warmed up, but not boiling yet. Try harder.")
 ```
-  
-Notice colons at the ends of the `if`, `for`, and `else` statements.  
+
+Notice colons at the ends of the `if`, `for`, and `else` statements.
 
 ## Code layout has meaning
 
@@ -319,7 +241,7 @@ IndexError: list index out of range
 
 ::: {.notes}
 
-Notice the first element in a list is numbered 0 (zero).  
+Notice the first element in a list is numbered 0 (zero).
 
 Any time you index into a list, Python always counts starting at 0,
 not 1. Forgetting this will likely be a big source of mistakes.
@@ -365,7 +287,7 @@ AB
 
 ::: {.notes}
 
-Python strings _act_ just like lists of letters.  
+Python strings _act_ just like lists of letters.
 
 Here's some useful syntax for selecting just parts of strings (and
 lists).
@@ -663,23 +585,63 @@ than pip.
 
 :::
 
-# Working with LIGO data
+# Jupyter
 
-## Plotting LIGO data
+## Jupyter notebooks
 
-![](img/ligo-plot.png)
+![image from https://jupyter.org/](./img/jupyter-notebook.png){width=50%}
 
 ::: {.notes}
 
-- LIGO (<https://www.ligo.caltech.edu/>) is an NSF major facility that
-  studies gravitational waves.
-  
-- LIGO makes experimental data available for the public.
+What are Jupyter notebooks?  Why are they useful?
 
-- One of your tasks this week is to download some of this data, and
-  plot it in a Jupyter notebook.
+- Jupyter notebooks are a way to write text/documentation, code,
+  equations, data, graphs, images, etc. together.
+- You can view and edit these notebooks in a web browser window.
+- You can execute code in these notebooks from the web browser window.
+- You can share these notebooks with other people.
+
+They are kind of like paper lab notebooks, but in a browser window.
 
 :::
 
+## JupyterLab
+
+![image from https://jupyter.org/](./img/jupyter-lab.png){width=50%}
+
+::: {.notes}
+
+- JupyterLab is a newer, fancier way of working with notebooks.
+- Kind of like a web-based IDE (integrated development environment).
+- You can work with multiple notebooks side by side, use a file
+  browser, and use plugins that enhance functionality.
+:::
+
+## JupyterLab instances out there
+
+![](./img/colab.png){width=50%}
+
+::: {.notes}
+
+- Many organizations and projects host their own JupyterLab instances.
+
+- [Google Colab](https://colab.research.google.com), [Microsoft
+  Planetary Computer](https://planetarycomputer.microsoft.com/), [FABRIC
+  project's JupyterLab instance](https://jupyter.fabric-testbed.net/),
+  [Chameleon project's JupyterLab
+  instance](https://jupyter.chameleoncloud.org/), etc.
+
+
+- Google Colab is a fancier, dressed up rich cousin of JupyterLab.
+  Your notebooks will work there.
+
+- You can also set up an IDE (such as VS Code or Codium) to work with
+  notebooks.
+ 
+- You can preview notebooks from GitHub.com, sometimes.
+
+- [GitHub Codespaces](https://github.com/codespaces) has support for
+  notebooks.
+:::
 
 # FIN

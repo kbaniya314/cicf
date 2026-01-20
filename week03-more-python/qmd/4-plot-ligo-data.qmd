@@ -4,10 +4,10 @@ In this part of the tutorial, let us download some data from the LIGO
 observatory, and plot it.  
 
 Open a new terminal. In the terminal, use `cd` command to change to
-the directory `~/cicf/week02-python-and-jupyter`:
+the directory `~/cicf/week02-python`:
 
 ```
-cd ~/cicf/week02-python-and-jupyter
+cd ~/cicf/week02-python
 ```
 
 Now run `wget` with the URL of the data set as its argument:
