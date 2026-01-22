@@ -5,6 +5,7 @@ import re
 
 def test_exercise_1():
     goal = glob.glob('e*')
+    goal.sort()
     result = subprocess.run("./exercise-1.sh", capture_output=True)
 
     assert(result.returncode == 0)
