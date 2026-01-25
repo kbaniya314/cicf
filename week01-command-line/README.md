@@ -18,8 +18,6 @@ In exit surveys, many previous fellows have commented that having more familiari
 We will use the command line prompt inside GitHub Codespaces for this course.
 The Codespace is a Linux based container, and provides a good way to get used to using Linux and Unix-like systems.
 
-<!-- revise below for code spaces -->
-
 Open up the codespace and the terminal will be in the bottom window pane.bring up the terminal.
 Make the terminal full screen by choosing the four corner box in that pane's title bar.
 

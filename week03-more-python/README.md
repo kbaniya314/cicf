@@ -1,7 +1,6 @@
 # CICF Week 3
 
-The lesson for this week is a hands-on guide working in a supercomputing environment at the [Texas Advanced Computing Center (TACC)](https://tacc.utexas.edu/).
-However, there are many things with Python that are left to go over, so the tutorial will look at Jupyter notebooks and the Pandas library.
+There are many things with Python that are left to go over, so the tutorial will look at Jupyter notebooks and the Pandas library.
 
 The goals for this tutorial are:
 
@@ -18,18 +17,34 @@ Click it and then choose the second option, the installed python version.
 And this point you can execute the code cells in the notebook by putting the curser in the cell and typing Ctrl-Return.
 
 
+## Pandas
+
+There is an extremely useful tool for working with CSV data called Pandas.
+Open and work through the [second notebook](./2-pandas.ipynb).
+
+
+## LIGO
+
+Finally, lets look at some scientific data from a major facility.
+This is in the [third notebook](./3-plot-ligo-data.ipynb)
+
+
 
 # Resources
+
+* [Advanced HDF5 with h5py Tutorial](https://github.com/HDFGroup/hdf5-tutorial/blob/main/04-Python-Bliss.ipynb)
+* [HDF5 Field Guide](https://support.hdfgroup.org/documentation/hdf5/latest/)
+* [Basics of Pandas](https://www.geeksforgeeks.org/machine-learning/python-basics-of-pandas-using-iris-dataset/)
+* [Gravational Wave Open Science Center](https://gwosc.org/)
+
+
+** Scientific Computing **
 
 * HPC Carpentry [Introduction to High-Performance Computing](https://carpentries-incubator.github.io/hpc-intro/)
 * News article on design of a new HPC system at TACC: [With Vista, TACC now has three paths to its future horizon superomputer (2024)](https://www.nextplatform.com/2024/01/29/with-vista-tacc-now-has-three-paths-to-its-future-horizon-supercomputer/)
 * [BOINC](https://boinc.berkeley.edu/) distributed scientific computing
 * [SETI@Home](https://setiathome.berkeley.edu/) is the original distributed computing project. No longer distributing tasks, though.
 * TACC's [Frontera User Guide](https://docs.tacc.utexas.edu/hpc/frontera/)
-
-For SSH
-
-- GitHub [How to make an SSH keypair](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
 
 **Networking Performance Links**

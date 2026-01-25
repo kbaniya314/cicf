@@ -219,6 +219,15 @@ at the next line of the program.  Continue will keep running until
 another breakpoint or until the program ends.
 
 
+## Notes
+
+tracing: strace, ltrace, python trace
+debugger: pdb
+print statements
+
+
+
+
 ## Resources
 
 - [Python pdb debugger](https://docs.python.org/3/library/pdb.html)
