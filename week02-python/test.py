@@ -18,6 +18,6 @@ def test_exercise_2():
     assert(result.returncode == 0)
     out = result.stdout.decode() # translate from bytes to utf-8
     output = [line.split() for line in out.splitlines()]
-    assert(output.splitlines() == goal)
+    assert(output == goal)
 
 
