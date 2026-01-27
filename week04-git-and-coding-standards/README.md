@@ -1,64 +1,97 @@
 # CICF Week 4
 
-The goals for the week 4 lab are to:
+The goals for the week 4 tutorial are to:
 
-1. Create git repositories, commit changes and create and merge branches.
-2. Create a GitHub account.
+1. Be able to use Git at the command line
+2. Be able to make Git commits, create and merge branches.
 3. Make a pull request.
 
 ## Tutorial
 
-This tutorial will focus on one particular tool discussed in the lecture, the Git distributed version control software.
-Focusing on this tool makes sense since it is useful for any situation involving sharing text files between people.
+Git has become ubiquitous in all of computing, not just scientific computing.
+Git is useful in any situation that involves sharing text files between people.
+Git tracks changes at the directory level.
+This means you make changes not just to a single file, but to _groups_ of files at a time.
 
-To really start using Git we need to configure it with a name and email to use
-to tag the changes we make.
-This is what I entered, change the name and email to be yours.
+Git is already installed and configured in your Codespace:
 
-    git config --global user.name "Don Brower"
-    git config --global user.email "dbrower@nd.edu"
+    @dbrower ➜ /workspaces/cicf (main) $  git config list | grep user
+    user.name=Don Brower
+    user.email=dbrower@nd.edu
 
-While the default editor is set to be "nano", let's make it explicit:
+You should see your name and email.
+These are what Git uses to identify you when you make changes to the repository.
 
-    git config --global core.editor nano
+> [!NOTE]
+> If you are using Git and these are not configured, you can do it from
+> the command line:
+>
+>     git config --global user.name "Don Brower"
+>     git config --global user.email "dbrower@nd.edu"
+>
+> And while you are at it, set the default editor as well. If you don't
+> have an editor yet, use `nano`. (you don't need to do this in the codespace though).
+> 
+>     git config --global core.editor nano
 
-Every Git repository has a notion of a "default branch".
-This is kind of the natural starting point for browsing the code.
-Most new git repositories use "main" as this branch name.
-We will make sure that is configured for us:
 
-    git config --global init.defaultBranch main
+We have been using Git this whole time.
+A basic Git command is "status" which gives information on the changes
+in the current directory.
 
-Git tracks changes to the files inside an entire directory.
-Let's make a directory to work in.
-We will make a new Git repository in this directory for us to practice making commits.
+    $ git status
+    On branch main
+    Your branch is up to date with 'origin/main'.
 
-    $ mkdir first-repo
-    $ cd first-repo
+    Untracked files:
+      (use "git add <file>..." to include in what will be committed)
+            .vscode/
+            week01/
+            week03-more-python/iris.csv
+            zzz
+
+    nothing added to commit but untracked files present (use "git add" to track)
+
+This tells us what branch we are on, whether our current version matches
+the version in our remote repository named `origin/main`.
+It lists any files with changes and also the _untracked_ files, that is
+files that exist in the directory but which have not been added to the repository.
+The exact files you see in these lists depends on the exact changes in your Codespace.
+
+You can also see the history of the changes in the repository.
+
+    $ git log --graph
+
+This displays the commits in the `ci-compass/cicf` repository starting from the
+version your codespace is at and going backward in time to the first commit.
+
+## Using a test repository
+
+The best way to experiment with Git is to make a new repository to work on.
+For this section we will make another Git repository in the codespace at `/workspaces/test`.
+
+    $ cd /workspaces
+    $ mkdir test
+    $ cd test
     $ git init
-    Initialized empty Git repository in /home/cicf/first-repo/.git/
+    Initialized empty Git repository in /workspaces/test/.git/
 
-The "git init" command tells Git to make a new repository in the current
-directory. This new repository is completely empty—none of the files have been added to it yet.
+The `git init` command makes a new repository in the current directory.
+This new repository is completely empty—no files have been added to it yet.
 It is good for every project to have a README file that contains the project name and a description for it.
 
-    nano README.md
+    $ code README.md
 
 Type the following:
 
 ```
-First Repository
-================
+Test Repository
+===============
 
 A repository to test git commands.
 ```
 
-Exit nano by typing CTRL-S to save and then CTRL-X to exit.
-
-Git classifies the files in our directory as either _tracked_ or _untracked_.
-Tracked files are stored in the repository and have their changes being tracked by Git.
-Untracked files are not tracked by Git.
-We can ask Git to tell us the status of the files in our directory.
+Now if we look at the status.
 
     $ git status
     On branch main
@@ -77,28 +110,32 @@ The untracked file list is a good reminder that a new file has been created and
 we should either track it or tell Git to ignore it.
 Tell Git to track this file:
 
-    git add README.md
+    $ git add README.md
 
 The `git add` command instructs Git to include the changes we've made to this
 file in the next commit, but doesn't actually save it to the repository.
 The `git commit` will actually save the changes into the repository.
 
-    git commit
+    $ git commit
 
 A text editor will appear when you run this.
 The editor is for you to type a message to describe this change.
 Not all of the text will be saved, though.
 The lines starting with a hash `#` will be removed by Git before saving.
-Git uses them to remind you of the current branch and the files making up
-the commit.
+Git uses them to remind you of the current branch and the files that are part of this commit.
 
 A commit message should consist of at least one line giving a brief summary of the changes.
 Then, if more information is desired, enter a blank line and then write as much as you care to.
 Since this is the first commit, nothing has changed yet, so the standard practice is to use "Initial commit".
-Exit nano with CTRL-X and save the message.
+In the Codespace window you will see a blue button that says "Commit".
+Click it.
 We've made a commit.
 
-Run `git status`. Has anything changed?
+Run `git status`.
+
+    $ git status
+    On branch main
+    nothing to commit, working tree clean
 
 We can see the commit history with `git log`.
 
@@ -113,20 +150,20 @@ Every commit has a name consisting of a bunch of random-ish numbers and letters,
 (The name is a SHA1 hash of the contents of the commit, including the current date, committer, etc, so it will necessarily be different from what is shown here).
 Most commits will have one parent.
 A few may have more than one parent (these are "merge commits").
-Since this was the first commit there are no parent commits this time.
+Since this was the first commit there are no parents.
 
 Let's make a change to the README file.
 Change 'A' to 'The' and add a second line.
 
-    $ nano README.md
+    $ code README.md
     $ git diff
     diff --git a/README.md b/README.md
     index 6bbab16..d7ff0d7 100644
     --- a/README.md
     +++ b/README.md
     @@ -1,4 +1,4 @@
-     First Repository
-     ================
+     Test Repository
+     ===============
      
     -A repository to test git commands.
     +The repository to test git commands.
@@ -144,7 +181,7 @@ This makes a second commit.
 Notice that we needed to "add" the README file, even though it was already tracked.
 This is because a commit does not automatically contain all the changes in the working copy.
 The add means "add the changes in this file to the next commit."
-The need to add files before committing changes is called "staging" the files.
+The need to add files before committing changes is called _staging_ the files.
 The idea is that you might change many files, but only want to save some of the changes.
 For example, you might have needed to change a configuration file or some other
 setting so the code works on your computer, but you don't want those changes to
@@ -152,128 +189,198 @@ be shared with others.
 
 You can see when each line in a file was changed by using `git blame`
 
-    git blame README.md
+    $ git blame README.md
+
+If you started making a change and changed your mind, you can revert a file back to its version in the previous commit:
+
+    $ echo "whoops" > README.md
+    # we want to recover the previous version of README:
+    $ git checkout README.md
+
+### Branches
+
+The repository has a complete history of changes.
+The "checkout" command lets us view the repository at a previous point in time.
+You can checkout an exact change, or you can check out a _branch_.
+A branch lets us make changes in a way that won't disrupt other people.
+And then, if we feel like it we can merge branches together to share the changes.
+
+The easiest way to make a branch is to just tell Git we want to start a branch from our current location:
+
+    # in /workspaces/test
+    $ git checkout -b new-branch
+    Switched to a new branch 'new-branch'
+
+We will usually name the branch in clearer way.
+The status message will now show that we are on the new branch:
+
+    # in /workspaces/test
+    $ git status
+    On branch new-branch
+    nothing to commit, working tree clean
+
+Lets add some numbers to the README (the two carets will _append_ the output to the specified file)
+
+    # in /workspaces/test
+    $ seq 10 >> README.md
+    $ git add README.md
+    $ git commit
+    [new-branch a5714fb] more changes
+     1 file changed, 10 insertions(+)
+
+Now we can see the changes between our branch and the main branch
+
+    # in /workspaces/test
+    $ git diff main
+
+This is showing us that the branch has lines added.
+One nice thing about branches is that you can switch between them if you have a few projects going on.
+
+    # in /workspaces/test
+    $ git checkout main
+
+This will change all the files to be as they are on the "main" branch.
+You can then make commits or switch to other branches.
+
+    # in /workspaces/test
+    $ git checkout new-branch
+
+You will eventually want to combine the changes in the branch with other branches or the main branch.
+Usually this is through a review step so others are award of what you did and can approve it.
+But for small repositories you will merge branches yourself.
+You can do this via a Pull Request on GitHub, or you can do it on the command line.
+We'll first do it on the command line.
+
+    # in /workspaces/test
+    $ git checkout main
+    $ git merge new-branch
+
+Mostly, this should just work. You will be asked to edit a commit message for the _merge commit_, which is the junction combining the two branches.
+If there were changes to a file on both branches that overlapped you will have a _merge conflict_, and at this point you Git will tell you and ask you to edit the conflict.
+Git will have edited the files to include both sets of changes inside tags that start with `<<<<`, `=====`, and `>>>>>`.
+Edit the files to be as you want them to be, `git add` them and then `git merge --continue`.
+
+Alternately, to use a pull request, upload the branch to the shared repository and then use the repository service to make the request.
+
+### first rule of Git
+
+Git can overwrite changes that you have not committed yet.
+It will try not to, but sometimes it will.
+The best places for changes is actually _committed in the repository_ since then there are ways to find and get them again, no matter
+what state your local files have ended up in.
+Now, figuring our the commands to get the changes back may be non-trivial, but it is possible.
+
+### Detached HEAD
+
+You might get an warning message about "detached HEAD state".
+The current state that is checked out is call the HEAD commit.
+When you check out a branch Git knows that if you make a commit it will be on the current branch, and it will update the branch to
+point to this new commit.
+If you are in detached HEAD state, Git doesn't know what branch you are on and it is complaining.
+Nothing is wrong, it is just a side effect of how Git tracks branches.
 
 
-### Working with GitHub
+## Working with GitHub
 
 Most projects are shared using a Git hosting service.
 These services keep a copy of the repository, and may provide a web-based UI and workflow tasks.
-One of the biggest is GitHub, and now we will look at how it is used.
-There are many open source and open science libraries and applications on GitHub.
+The most important service these Git hosting services provide is a copy of you Git repositories in the cloud.
+This lets you have a copy not on your computer, and if you are on a team, it can be a central point where everyone on the team can share changes and updates.
+The cloud service is also nice since it provides a web page that you can use to share code with others.
 
-First you need to create an account on it if you don't have one already.
-Accounts are free. Sign up at [github.com](https://github.com).
+The Git repository on your computer is called your _local repository_.
+Copies of the repository not on your computer are _remote repositories_.
+There can be more than one remote repository, but usually there is just one.
+In your local repository you can give nicknames the remotes.
+The default nickname for the first remote repository is "origin".
+This is usually the place where you will get all the new changes from and push your changes to.
 
-We will make a public/private key pair to facilitate pushing commits to GitHub.
-This key pair will be unique to you on your VM image.
-On the command line run the following, substituting in a good email address for you.
+Lets make a copy of the test repository on GitHub.
+On the Github website, create a new repository.
+Name it "cicf-test".
+It will be empty.
 
-    ssh-keygen -t ed25519 -C "your_email@example.com cicf"
+Now copy the repository location by choosing the green `<> Code` button and then
+choosing the HTTPS tab.
+You should see a path similar to `https://github.com/dbrower/cicf.git`.
+Copy the path by clicking the clipboard icon next to it.
+At the command line add it to the "test" repository:
 
-Choose to save the key in the default location (which is `~/.ssh`).
-Do not enter a passphrase; when asked just press enter.
+    # in /workspaces/test
+    $ git remote add origin <our-copied-repo-path> # <-- paste in the path here
 
-There are two files for the pair: one for the private key and one for the public key.
-Never share the private file.
-In fact, good practice is to never remove the private file from this VM image.
+Now push your changes to GitHub:
 
-    $ cd ~/.ssh
-    $ ls 
-    id_ed25519  id_ed25519.pub
-    $ cat id_ed25519.pub
+    # in /workspaces/test
+    git push origin main
 
-The `id_ed25519.pub` file is the public key.
-You share the public key with others and then they can use it to verify who you are since this VM is the only place with the corresponding private key.
+You can see the remotes configured for this repository with:
 
-Let's add the public key to your GitHub account.
-Open Firefox in the VM and sign in to GitHub.
-Once in, go to the menu in the upper right (your profile picture) and choose "Settings".
-Then choose "SSH and GPG keys" from the left-hand side.
-Name the key "CICF VM"; keep the key type option as "Authentication Key";
-and then paste in the public key we put on the terminal.
+    $ git remote –v
 
 
 ### Push to a GitHub Repository
 
-Let's practice pushing a commit to a repository.
-First, check out the repository I have prepared, [cicf-2025](https://github.com/dbrower/cicf-2025).
+The most basic operation is getting changes from the remote repository.
+We have already done "pulls": this does a two step operation of first getting changes from the remote
+and then updating your current branch to contain all the new changes on it.
+There is also a "fetch" that just gets the changes from the remote but doesn't do the update step.
 
-    $ cd
-    $ git clone git@github.com:dbrower/cicf-2025.git
+    # in /workspaces/test
+    $ git fetch
+    $ git pull
 
-This will make a copy of the repository to your VM.
-Notice that the local copy of the repository on the VM has a "remote" pointing to the repository we cloned it from.
-This is to make it easier to move changes back to the source repository.
+The other basic step is moving your updates to the remote repository.
+This is called a "push".
+Git doesn't match branch names up automatically, so we need to tell Git that our "main" branch is the same as the remote's "main" branch.
+That is why we type "origin main" on the command line.
 
-    $ cd cicf-2025
-    $ git remote –v
+    # in /workspaces/test
+    $ git push origin main
 
-Since you don't have write access to the original repository, we will rename it to "upstream" to remind us of this.
-(Usually "origin" will point to the place our changes will be shared with, but that requires write access.)
+Now you will see these changes on GitHub.
 
-    $ git remote rename origin upstream
 
-Add a copy of your **public** key to this repository.
-Name the file with your first initial + last name:
+### Making changes to other GitHub repositories
 
-    $ cp ~/.ssh/id_ed25519.pub dbrower.pub
-    # change "dbrower" to your name
+Sometimes you want to suggest a change to a repository you do not have write access to.
+You can handle that by making a copy (_fork_) of the repository to your shared hosting provider, pushing your changes there and then making a pull request back into the original repository.
 
-We will add this file as a commit on a branch:
-
-    $ git checkout -b add-key
-    $ git add dbrower.pub
-    $ git commit
-
-Now we will share the commit back to the hosting service.
-
-    $ git push upstream add-key
-
-If we had write access this would copy our branch and commit.
-But you don't have write access, so the solution is for you to make your own
-copy on the hosting service and then put your changes there.
-This is called "forking a repository" in the GitHub parlance.
-Use the browser to visit [the repo](https://github.com/dbrower/cicf-2025)
-on the GitHub service and choose "fork" to make your own copy of it.
-
+Lets try this by making a fork of the CICF repository.
+Do this on the GitHub webpage for [ci-compass/cicf](https://github.com/ci-compass/cicf).
+There is a drop down menu on the top that says "Fork".
 When GitHub is done making your forked copy of the repository,
-get a copy of the repository location by choosing the green `<> Code` button and then
-choosing the SSH tab and you should see a path similar to `git@github.com:dbrower/cicf-2025`.
+find the new repository location by choosing the green `<> Code` button and then
+choosing the SSH tab.
+You should see a path similar to `git@github.com:dbrower/cicf`.
 Copy the path by clicking the clipboard icon next to it.
 At the command line add it to the checked out repository:
 
-    git remote add origin <our-forked-repo-path> # <-- paste in the path here
+    # in /workspaces/cicf
+    git remote add personal <our-forked-repo-path> # <-- paste in the path here
 
-Push your changes to your copy:
+Now lets make a branch.
 
-    git push origin add-key
+    # in /workspaces/cicf
+    git checkout -b my-patch
 
-View the changes in the browser.
+You can now make the changes you want and then when the branch looks good:
+
+    git push personal my-patch
+
+Notice that this time we pushed the new branch to our forked copy of the repository.
+For GitHub, you can now view the new branch in the browser on your forked copy.
 Choose "compare and pull request".
-On the next page make sure the base branch is the main branch in the dbrower copy of the repository.
-And then select "Create pull request".
+This is how you submit a pull request.
+Exercise 1 will ask you to make a pull request on another repository.
+If the person reviewing the pull request has changes, you can make them in local checkout.
+Then add them with a commit to the same branch and then 
 
-On your VM change your branch back to `main`
+    git push my-patch
 
-    $ git checkout main
-    $ git pull upstream
+will update your personal branch with the new changes.
 
-## Homework
 
-Everyone should make a pull request to the [cicf-2025] repository with
-the public key you generated on your VM.
-The process is outlined above in the [Working with GitHub](#working-with-github) section.
-In summary you should:
-
-1. Make a GitHub account if you haven't already.
-2. Fork the [cicf-2025] repository to make your own copy.
-3. Clone your copy to your VM.
-4. Copy your **public key** (the file ending with a `.pub`) to the cloned repository and make a commit adding it
-5. Push your commit back to your copy of the repository.
-6. Make a Pull Request to merge your commit into the main repository [cicf-2025].
-
-[cicf-2025]: https://github.com/dbrower/cicf-2025
 
 ## Major Facility Repositories
 
@@ -287,38 +394,6 @@ This list is not comprehensive. (And if one is missing, please submit a pull req
 * [EarthScope](https://github.com/EarthScope)
 
 
-
-<!-- copied from week 1... -->
-### Git
-
-Git is an extremely useful tool for programming and scientific computing.
-A git _repository_ is used to track and share changes to a set of files, such as
-source code project, analysis scripts, or documentation.
-We interact with a git repo by first making a copy to our computer.
-This is called "cloning" the repository.
-When we make changes to these files we can update our local repository (via a _commit_) and
-share the changes by moving these changes to other repositories (a _push_).
-
-Lets first install Git:
-
-    sudo apt install git
-
-Enter the password, and then press 'y' to agree to the installation. 
-Now that Git is installed, lets clone the CICF repository:
-
-    git clone https://github.com/ci-compass/cicf
-
-This tells Git to copy the repository at the given URL onto our VM.
-By default Git will make a directory named `cicf` and put everything inside there.
-
-    cd cicf
-    ls
-    cd week01-command-line
-    cat README.md
-
-<!-- END -->
-
-
 ## Resources
 
 It is hard to overstate the importance and usefulness of Git in modern software
@@ -330,7 +405,7 @@ development. Being comfortable with using Git is absolutely essential for techni
 - [Beej's Guide to Git](https://beej.us/guide/bggit/)
 - There are many Git hosting sites, these are the big three: [GitHub](https://github.com), [GitLab](https://about.gitlab.com/), [Bitbucket](https://bitbucket.org/). There are also many smaller ones, such as [SourceHut](https://sourcehut.org/) and [Gitea](https://about.gitea.com/). You can also self-host one, with [Gitea self-hosted](https://github.com/go-gitea/gitea) or [Gitolite](https://gitolite.com/gitolite/index.html).
 - [GitHub Skills](https://skills.github.com/) are interactive courses on using GitHub effectively including making [static websites (GitHub Pages)](https://github.com/skills/github-pages).
-- Git is by far the most used version control system, but it isn't the only one: [Mercurial](https://www.mercurial-scm.org/), [Fossil](https://www2.fossil-scm.org/home/doc/trunk/www/index.wiki), [Subversion](https://subversion.apache.org/), [CVS]
+- Git is by far the most used version control system, but it isn't the only one: [Mercurial](https://www.mercurial-scm.org/), [Fossil](https://www2.fossil-scm.org/home/doc/trunk/www/index.wiki), [Subversion](https://subversion.apache.oHTTPS), [CVS]
 CVS (ancient, old, please never use)
 - [The Biggest and Weirdest Commits in Linux Kernel Git History](https://www.destroyallsoftware.com/blog/2017/the-biggest-and-weirdest-commits-in-linux-kernel-git-history) (2017)
 
@@ -341,7 +416,7 @@ Developers love to design algorithms—including ways that people should organiz
 - [Example](https://github.com/elastic/elasticsearch-formal-models/pull/29) of a GitHub Pull Request and comments
 
 There are lots of coding standards.
-- The Python [PEP 8](https://peps.python.org/pep-0008/) standard for the Python standard library.
+- The Python [PEP 8](httpHTTPS/peps.python.org/pep-0008/) standard for the Python standard library.
 - Google [Style Guides](https://google.github.io/styleguide/) for many different languages.
 - [JPL Institutional Coding Standard for the C Programming Language](https://andrewbanks.com/wp-content/uploads/2019/07/JPL_Coding_Standard_C.pdf)
 - [The Power of 10 Rules](https://en.wikipedia.org/wiki/The_Power_of_10:_Rules_for_Developing_Safety-Critical_Code)
@@ -361,4 +436,4 @@ Testing is a huge area to learn about.
 - [Types of tests](https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing)
 - [Model Checking](https://en.wikipedia.org/wiki/Model_checking) can verify correctness of programs to a specification. In this way it is the other side of the coin from testing. They are based on [temporal logics](https://en.wikipedia.org/wiki/Computation_tree_logic). One example of a model checker is [TLA+](https://lamport.azurewebsites.net/tla/tla.html).
 
-
+- [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/) an MIT course that covers the same ideas as Software Carpentry: many useful computing skills are not taught in university CS classes.

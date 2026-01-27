@@ -43,3 +43,4 @@ Other interesting links:
 - [Google Machine Learning Course](https://developers.google.com/machine-learning/crash-course/ml-intro)
 - [Library of Statistical Techniques](https://lost-stats.github.io/)
 - [Bias-Variance Tradeoff](https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff)
+- [UC Irvine Machine Learning Repository](https://archive-beta.ics.uci.edu/) has a bunch of datasets.

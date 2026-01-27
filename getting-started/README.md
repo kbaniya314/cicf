@@ -62,4 +62,24 @@ Do the task of the exercise and then you can see how you did by running the comm
 This will run tests and output the results to the terminal.
 Successful tests appear as green, and unsuccessful tests appear as red.
 
+## Updating your Codespace
+
+You can update your codespace with the current `ci-compass/cicf` repository by using Git:
+
+	git pull
+
+If you get a conflict, it is probably because of some file changing.
+The Jupyter notebook files (`*.ipynb`) are notorious for this.
+There are two ways of taking care of this.
+You can replace these files with the version in the repository:
+
+	git checkout _filename_
+
+Or you can "stash" your changes and try to then re-apply them:
+
+	git stash
+	git pull
+	git stash pop
+
+
 
