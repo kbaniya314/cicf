@@ -13,7 +13,7 @@ def test_exercise_1():
 
 
 def test_exercise_2():
-    goal = [["setosa", 1.464], ["versicolor", 4.260], ["virginica", 5.552]]
+    goal = [["setosa", '1.464'], ["versicolor", '4.260'], ["virginica", '5.552']]
     result = subprocess.run("./exercise-2.py", capture_output=True)
     assert(result.returncode == 0)
     out = result.stdout.decode() # translate from bytes to utf-8
