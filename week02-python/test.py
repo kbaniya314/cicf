@@ -17,7 +17,7 @@ def test_exercise_2():
     result = subprocess.run("./exercise-2.py", capture_output=True)
     assert(result.returncode == 0)
     out = result.stdout.decode() # translate from bytes to utf-8
-    output = [line.split() for line in out]
-    assert(output.splitlines() == goal)
+    output = [line.split() for line in out.splitlines()]
+    assert(output == goal)
 
 
