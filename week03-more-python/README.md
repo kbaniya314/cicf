@@ -38,7 +38,7 @@ This is in the [third notebook](./3-plot-ligo-data.ipynb)
 * [Gravational Wave Open Science Center](https://gwosc.org/)
 
 
-** Scientific Computing **
+**Scientific Computing**
 
 * HPC Carpentry [Introduction to High-Performance Computing](https://carpentries-incubator.github.io/hpc-intro/)
 * News article on design of a new HPC system at TACC: [With Vista, TACC now has three paths to its future horizon superomputer (2024)](https://www.nextplatform.com/2024/01/29/with-vista-tacc-now-has-three-paths-to-its-future-horizon-supercomputer/)
@@ -54,3 +54,4 @@ This is in the [third notebook](./3-plot-ligo-data.ipynb)
 * One can use non-TCP and non-IP protocols like [Internet2](https://internet2.edu/), [ESnet (DOE)](https://www.es.net/), [NSF FABRIC Testbed](https://fabric-testbed.net/), or custom (e.g. [Facebook](https://engineering.fb.com/category/networking-traffic/)
 * Popular press article: [Connecting the South Pole](https://www.datacenterdynamics.com/en/analysis/connecting-the-south-pole/)
 
+* [Jupyter Notebooks – a publishing format for reproducible computational workflows](https://dx.doi.org/10.3233/978-1-61499-649-1-87) (Kluyver, et al.) Original paper introducing Jupyter notebooks.

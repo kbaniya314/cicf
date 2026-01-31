@@ -1,33 +1,36 @@
 # CICF Week 4
 
-The goals for the week 4 lab are to:
+The goals for the week 4 tutorial are to:
 
-1. Create git repositories, commit changes and create and merge branches.
-2. Create a GitHub account.
+1. Be able to use Git at the command line
+2. Be able to make Git commits, create and merge branches.
 3. Make a pull request.
 
 ## Tutorial
 
-This tutorial will focus on one particular tool discussed in the lecture, the Git distributed version control software.
-Focusing on this tool makes sense since it is useful for any situation involving sharing text files between people.
+Git has become ubiquitious in all of computing, not just scientific computing.
+Git is useful in any situation that involves sharing text files between people.
 
-To really start using Git we need to configure it with a name and email to use
-to tag the changes we make.
-This is what I entered, change the name and email to be yours.
+In your codespace git is already installed and configured:
 
-    git config --global user.name "Don Brower"
-    git config --global user.email "dbrower@nd.edu"
+    @dbrower ➜ /workspaces/cicf (main) $  git config list | grep user
+    user.name=Don Brower
+    user.email=dbrower@nd.edu
 
-While the default editor is set to be "nano", let's make it explicit:
+You will see your name and email.
+These are used to identify you when you make changes to the repository.
 
-    git config --global core.editor nano
+> [!NOTE]
+> If you are using Git and these are not configured, you can do it from
+> the command line:
+>
+>    git config --global user.name "Don Brower"
+>    git config --global user.email "dbrower@nd.edu"
+>
+> And while you are at it, set the default editor as well. If you don't
+> have an editor yet, use `nano`.
+>    git config --global core.editor nano
 
-Every Git repository has a notion of a "default branch".
-This is kind of the natural starting point for browsing the code.
-Most new git repositories use "main" as this branch name.
-We will make sure that is configured for us:
-
-    git config --global init.defaultBranch main
 
 Git tracks changes to the files inside an entire directory.
 Let's make a directory to work in.
@@ -361,4 +364,4 @@ Testing is a huge area to learn about.
 - [Types of tests](https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing)
 - [Model Checking](https://en.wikipedia.org/wiki/Model_checking) can verify correctness of programs to a specification. In this way it is the other side of the coin from testing. They are based on [temporal logics](https://en.wikipedia.org/wiki/Computation_tree_logic). One example of a model checker is [TLA+](https://lamport.azurewebsites.net/tla/tla.html).
 
-
+- [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/) an MIT course that covers the same ideas as Software Carpentry: many useful computing skills are not taught in university CS classes.
