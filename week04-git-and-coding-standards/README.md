@@ -295,19 +295,28 @@ In your local repository you can give nicknames the remotes.
 The default nickname for the first remote repository is "origin".
 This is usually the place where you will get all the new changes from and push your changes to.
 
-Lets make a copy of the test repository on GitHub.
+We need to make an access token so we can get to our repositories from the Codespace
+(by default the codespace can just push changes to your copy of `ci-compass/cicf`).
+Follow [this link](https://github.com/settings/personal-access-tokens/new?name=CICF+token&description=Write%20code%20and%20push%20it%20to%20main%21&contents=write&pull_requests=write&workflows=write&expires_in=90) to open a browser window that lets you create the access token.
+An access token is just a sequence of characters.
+Once you make the token, copy it and paste it into the following command line in your Codespace:
+
+    export GH_TOKEN="paste token here inside the quotes"
+
+> [!NOTE]
+> If you start a new codespace you will need to make a new token for it.
+> Likewise, if you close a codespace you can delete the token on your GitHub profile in Settings > Developer Settings > Personal Access Tokens > [Fine-grained Tokens](https://github.com/settings/personal-access-tokens).
+> There is also [more info on creating a fine-grained personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token).
+
+OK, now lets make a copy of the test repository on GitHub.
 On the Github website, create a new repository.
 Name it "cicf-test".
 It will be empty.
 
-Now copy the repository location by choosing the green `<> Code` button and then
-choosing the HTTPS tab.
-You should see a path similar to `https://github.com/dbrower/cicf.git`.
-Copy the path by clicking the clipboard icon next to it.
 At the command line add it to the "test" repository:
 
     # in /workspaces/test
-    $ git remote add origin <our-copied-repo-path> # <-- paste in the path here
+    $ git remote add origin "https://$GITHUB_USER:$GH_TOKEN@github.com/$GITHUB_USER/cicf-test"
 
 Now push your changes to GitHub:
 
