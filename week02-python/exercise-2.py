@@ -28,7 +28,7 @@ with open('iris.csv', 'r') as f:
 # change this to print the average for each species
 # hint: use numpy
 for k,v in species.items():
-    print(f"{k} {v:0.3f}")
+    print(f"{k} {v[0]:0.3f}")
 
 
 
