@@ -150,6 +150,8 @@ We can interact with it via python.
 
     pip install redis
 
+<!-- TODO: update requirements.txt to include redis module -->
+
 And now:
 
     $ python
